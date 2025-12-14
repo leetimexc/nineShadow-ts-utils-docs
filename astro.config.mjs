@@ -2,9 +2,12 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
+const isProd = process.env.NODE_ENV === 'production'
+
 // https://astro.build/config
 export default defineConfig({
   outDir: './nineshadow-utils',
+  base: isProd ? '/nineshadow-utils/' : '/', // 本地'/'，生产'/nineshadow-utils/'
 	integrations: [
 		starlight({
 			title: '@nineshadow/http-utils',
