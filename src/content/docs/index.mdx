@@ -1,40 +1,99 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: '@nineshadow/http-utils'
+description: 九影科技 HTTP 工具库 - 统一身份认证、文件上传、用户管理、长连接等功能封装
+template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
+  tagline: 企业级 TypeScript HTTP 工具库，提供身份认证、文件上传、用户管理、WebSocket 长连接等开箱即用的功能模块
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: 快速开始
+      link: /getting-started/quick-start/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
+      variant: primary
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid } from '@astrojs/starlight/components'
 
-## Next steps
+## ✨ 核心特性
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+  <Card title="🎯 TypeScript 优先" icon="open-book">
+    完整的类型定义，提供极佳的开发体验和智能代码提示
+  </Card>
+  <Card title="📦 模块化设计" icon="add-document">
+    按需引入，Tree-shaking 友好，有效减小打包体积
+  </Card>
+  <Card title="🔐 IAM 身份认证" icon="setting">
+    支持手机验证码登录、账号密码登录、注册、密码管理等完整认证流程
+  </Card>
+  <Card title="📤 文件上传" icon="document">
+    支持单文件/批量上传、图片压缩、上传进度监控
+  </Card>
+  <Card title="👤 用户管理" icon="pen">
+    用户信息获取、更新、头像上传、手机邮箱绑定
+  </Card>
+  <Card title="🔌 WebSocket" icon="rocket">
+    长连接支持，自动重连、心跳检测、消息管理
+  </Card>
+  <Card title="⚡ Vite 构建" icon="setting">
+    快速的开发和构建体验，支持 ESM 和 CJS 双模块格式
+  </Card>
+  <Card title="🌐 框架无关" icon="star">
+    支持 Vue、React 等任意前端框架，开箱即用
+  </Card>
 </CardGrid>
+
+## 🚀 快速安装
+
+### 从私服安装
+
+```bash
+# npm
+npm install @nineshadow/http-utils --registry="https://nexus.9shadow.com/repository/npm-public/"
+
+# pnpm
+pnpm add @nineshadow/http-utils --registry="https://nexus.9shadow.com/repository/npm-public/"
+
+# yarn
+yarn add @nineshadow/http-utils --registry="https://nexus.9shadow.com/repository/npm-public/"
+```
+
+:::note
+**私服账号**: web | **密码**: 请联系管理员
+:::
+
+## 📖 简单示例
+
+```typescript
+import {
+  setConfig,
+  loginByPhoneCaptcha,
+  getUserInfo,
+} from '@nine-shadow/http-utils'
+
+// 1. 初始化配置
+setConfig({
+  baseURL: 'https://api.example.com',
+  timeout: 30000,
+  language: 'zh-CN',
+})
+
+// 2. 手机验证码登录
+const result = await loginByPhoneCaptcha({
+  phone: '18639150947',
+  captcha: '123456',
+})
+
+// 3. 获取用户信息
+const userInfo = await getUserInfo()
+console.log(userInfo)
+```
+
+## 📚 技术栈
+
+- **TypeScript 5.3+** - 类型安全
+- **Axios 1.6+** - HTTP 客户端
+- **Vite 5.0+** - 构建工具
+
+## 📄 开源协议
+
+MIT License © 2024 九影科技

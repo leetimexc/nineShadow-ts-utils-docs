@@ -1,0 +1,9 @@
+:root {
+  /* Fallback for icon color when Starlight variable is missing */
+  --sl-icon-color: currentColor;
+}
+
+/* Ensure Card icons inherit color properly */
+.starlight-aside .icon, .sl-card .icon, [class*="Card"] .icon {
+  color: var(--sl-icon-color, currentColor);
+}
